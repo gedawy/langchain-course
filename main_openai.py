@@ -1,6 +1,5 @@
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
-from langchain_ollama import ChatOllama
 from langchain_openai import ChatOpenAI
 
 load_dotenv()
@@ -27,8 +26,6 @@ def main():
         template=summary_template,
     )
 
-    # llm = ChatOpenAI(temperature=0, model="gpt-5")
-    # llm = ChatOllama(temperature=0, model="gemma3:270m")
     llm = ChatOpenAI(temperature=0, model="gpt-5")
     chain = summary_prompt_template | llm
     response = chain.invoke(input={"information": information})
